@@ -1,44 +1,46 @@
+version: '3.8'
+
 services:
-jellyfin:
-  image: jellyfin/jellyfin:latest
-  container_name: jellyfin
-  ports:
-    - "8096:8096"
-    - "8920:8920"     
-  volumes:
-    - C:/Tools/Jellyfin/config:/config
-    - C:/Tools/Jellyfin/cache:/cache
-    - type: bind
-      source: J:/TV-Shows #(PUT YOUR MEDIA DIRECTORIES FOLDER PATH HERE)
-      target: /TV-Shows
-    - type: bind
-      source: J:/Movies #(PUT YOUR MEDIAI DIRECTORIES FOLDER PATH HERE)
-      target: /Movies
-    - type: bind
-      source: J:/Music #(PUT YOUR MEDIAI DIRECTORIES FOLDER PATH HERE)
-      target: /Music
-    - type: bind
-      source: J:/Home-Movies #(PUT YOUR MEDIAI DIRECTORIES FOLDER PATH HERE)
-      target: /Home-Movies
-  restart: 'unless-stopped'
-  # Optional - alternative address used for autodiscovery
-  environment:
-#   (REMOVE THE # BELOW TO ENABLE QUICKSYNC)
-#  - UDOCKER_OPTS=--device /dev/dri:/dev/dri
-    - JELLYFIN_PublishedServerUrl=https://sub.domain.com #(CHANGE THIS TO YOUR DOMAIN)
-  # Optional - may be necessary for docker healthcheck to pass if running in host network mode
-#    extra_hosts:
-#      - 'host.docker.internal:host-gateway'
-# (REMOVE THE # FOR THE 3 LINES BELOW TO ENABLE REVERSE PROXY IF YOU WANT TO LIMIT IT TO JUST INSIDE THE CADDY NETWORK)
-# networks:
-#  proxy-tier:
-#    driver: bridge
-#   (ENABLE REMOVE THE # for EVERYTHING BELOW THIS LINE FOR NVIDIA GPUs)
-#    runtime: nvidia
-#    deploy:
-#      resources:
-#        reservations:
-#          devices:
-#            - driver: nvidia
-#              count: all
-#              capabilities: [gpu]
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    ports:
+      - "8096:8096"
+      - "8920:8920"
+    volumes:
+      - "C:/Tools/Jellyfin/config:/config"
+      - "C:/Tools/Jellyfin/cache:/cache"
+      - type: bind
+        source: "J:/TV-Shows" # (PUT YOUR MEDIA DIRECTORIES FOLDER PATH HERE)
+        target: "/TV-Shows"
+      - type: bind
+        source: "J:/Movies" # (PUT YOUR MEDIA DIRECTORIES FOLDER PATH HERE)
+        target: "/Movies"
+      - type: bind
+        source: "J:/Music" # (PUT YOUR MEDIA DIRECTORIES FOLDER PATH HERE)
+        target: "/Music"
+      - type: bind
+        source: "J:/Home-Movies" # (PUT YOUR MEDIA DIRECTORIES FOLDER PATH HERE)
+        target: "/Home-Movies"
+    restart: unless-stopped
+    # Optional - alternative address used for autodiscovery
+    environment:
+      - JELLYFIN_PublishedServerUrl=https://sub.domain.com # (CHANGE THIS TO YOUR DOMAIN)
+      # (REMOVE THE # BELOW TO ENABLE QUICKSYNC)
+      # - UDOCKER_OPTS=--device /dev/dri:/dev/dri
+    # Optional - may be necessary for docker healthcheck to pass if running in host network mode
+    # extra_hosts:
+    #   - 'host.docker.internal:host-gateway'
+    # (REMOVE THE # FOR THE 3 LINES BELOW TO ENABLE REVERSE PROXY IF YOU WANT TO LIMIT IT TO JUST INSIDE THE CADDY NETWORK)
+    # networks:
+    #   proxy-tier:
+    #     driver: bridge
+    # (ENABLE REMOVE THE # for EVERYTHING BELOW THIS LINE FOR NVIDIA GPUs)
+    # runtime: nvidia
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
