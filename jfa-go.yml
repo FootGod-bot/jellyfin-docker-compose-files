@@ -1,0 +1,11 @@
+services:
+  jfa-go:
+    container_name: 'jfa-go'
+    ports:
+      - '8056:8056'
+    volumes:
+      - '/opt/stacks/jfa/.config/jfa-go:/data'
+      - '/opt/stacks/jellyfin/config:/jf'
+      - '/etc/localtime:/etc/localtime:ro'
+    restart: unless-stopped
+    image: 'hrfee/jfa-go:unstable'
