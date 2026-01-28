@@ -31,7 +31,7 @@ jellyfin:
 #      - 'host.docker.internal:host-gateway'
 # (REMOVE THE # FOR THE 3 LINES BELOW TO ENABLE REVERSE PROXY IF YOU WANT TO LIMIT IT TO JUST INSIDE THE CADDY NETWORK)
 # networks:
-#  rvp-network:
+#  proxy-tier:
 #    driver: bridge
 #   (ENABLE REMOVE THE # for EVERYTHING BELOW THIS LINE FOR NVIDIA GPUs)
 #    runtime: nvidia
