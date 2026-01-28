@@ -33,8 +33,7 @@ services:
     #   - 'host.docker.internal:host-gateway'
     # (REMOVE THE # FOR THE 3 LINES BELOW TO ENABLE REVERSE PROXY IF YOU WANT TO LIMIT IT TO JUST INSIDE THE CADDY NETWORK)
     # networks:
-    #   proxy-tier:
-    #     driver: bridge
+    #   - proxy-tier
     # (ENABLE REMOVE THE # for EVERYTHING BELOW THIS LINE FOR NVIDIA GPUs)
     # runtime: nvidia
     # deploy:
@@ -44,3 +43,7 @@ services:
     #         - driver: nvidia
     #           count: all
     #           capabilities: [gpu]
+# If you enable the proxy-tier network, you also need to define it at the bottom:
+#networks:
+#  proxy-tier:
+#    driver: bridge
