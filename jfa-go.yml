@@ -9,3 +9,8 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
     restart: unless-stopped
     image: 'hrfee/jfa-go:unstable'
+    networks:
+      - proxy-tier
+networks:
+  proxy-tier:
+    driver: bridge
