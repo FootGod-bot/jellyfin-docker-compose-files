@@ -1,0 +1,11 @@
+services:
+  script-runner:
+    image: aidenbot3000/script-runner:latest
+    container_name: script-runner
+    environment:
+      TIME: 300  # Time in seconds
+    volumes:
+      - "C:/Docker/script-r/script-r.sh:/root/script.sh:ro"
+      # ro = read-only (keeps the script safe)
+      # use rw if you need read/write access
+    restart: unless-stopped
