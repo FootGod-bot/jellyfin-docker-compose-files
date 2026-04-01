@@ -1,0 +1,15 @@
+services:
+  samba:
+    image: dockurr/samba
+    container_name: samba
+    environment:
+        USER: "user"
+        PASS: "pass"
+    ports:
+      - 445:445
+    volumes:
+      - /docker/mount/movies:/movies
+      - /docker/mount/tv-shows:/tv-shows
+      - /docker/mount/music:/music
+      - /docker/con/samba.conf:/etc/samba/smb.conf
+    restart: always
