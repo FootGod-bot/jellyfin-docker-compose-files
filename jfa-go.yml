@@ -12,5 +12,6 @@ services:
     networks:
       - proxy-tier
 networks:
-  proxy-tier:
-    driver: bridge
+  jellyfin:
+    external: true
+    name: jellyfin

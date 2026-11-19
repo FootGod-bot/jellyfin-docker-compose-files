@@ -26,8 +26,9 @@ services:
       - ./letsencrypt:/etc/letsencrypt
 
     networks:
-      - proxy-tier
+      - jellyfin
 
 networks:
-  proxy-tier:
-    driver: bridge
+  jellyfin:
+    external: true
+    name: jellyfin
